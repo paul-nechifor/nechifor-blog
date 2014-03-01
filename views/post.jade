@@ -1,0 +1,13 @@
+extends layout
+
+block headStart
+  title {{ page.title }} – Paul Nechifor Blog
+
+block header
+  h1
+    a(href='{{ page.permalink }}') {{ page.title }}
+  p.date {{ page.date | date_to_string }}
+
+block content
+  article
+    | {{ content }}

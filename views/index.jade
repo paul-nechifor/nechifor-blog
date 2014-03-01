@@ -1,0 +1,22 @@
+extends layout
+
+block headStart
+  title Paul Nechifor's Blog
+
+block header
+  h1
+    a(href='/') Blog Posts
+
+block content
+  | {% for post in site.posts %}
+  .post-excerpt
+    .title
+      .date {{ post.date | date_to_string }}
+      h2
+        a(href='{{ post.url }}') {{ post.title }}
+    .excerpt
+      p
+        | {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
+        a(href='{{ post.url }}') (continue)
+
+  | {% endfor %}

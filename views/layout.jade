@@ -1,0 +1,27 @@
+= '---\n---\n'
+doctype html
+
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    block headStart
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='shortcut icon', href='/s/favicon.ico', type='image/x-icon')
+    link(rel='apple-touch-icon', sizes='57x57', href='/s/favicon57.png')
+    link(rel='apple-touch-icon', sizes='152x152', href='/s/favicon152.png')
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700')
+    link(rel='stylesheet', href='/s/c/site.css')
+    block head
+  body
+    header.plain
+      .links
+        a(href='http://nechifor.net').left Paul Nechifor
+        a(href='/').right Blog Posts
+      block header
+
+    .content
+      block content
+
+    footer
+      p © Paul Nechifor
+    script(src='//code.jquery.com/jquery-1.10.2.min.js')
