@@ -11,12 +11,17 @@ block content
   | {% for post in site.posts %}
   .post-excerpt
     .title
-      .date {{ post.date | date_to_string }}
+
       h2
         a(href='{{ post.url }}') {{ post.title }}
+      .date {{ post.date | date_to_string }}
     .excerpt
       p
         | {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
-        a(href='{{ post.url }}') (continue)
+        a(class='continue' href='{{ post.url }}') (continue)
+
+    | {% if forloop.last == false %}
+    .line
+    | {% endif %}
 
   | {% endfor %}

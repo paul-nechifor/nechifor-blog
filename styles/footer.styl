@@ -1,0 +1,26 @@
+html, body
+  height 100%
+
+.full-container
+  display table
+  height 100%
+  width 100%
+
+.non-footer
+  display table-row
+  height auto
+
+footer
+  display table-row
+  height 1px
+  .container
+    padding 30px 0
+  p:last-child
+    margin-bottom 0
+  p
+    text-align center
+  p, a
+    color #fff
+  a:hover
+    color tint(activeColor, 50%)
+  grad3(-45deg, #006ba3, #00BB9D, #006ba3)

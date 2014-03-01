@@ -1,65 +1,8 @@
 @import reset
 @import mixins
-
-body
-  font-family 'Open Sans', sans-serif
-
-strong
-  font-weight bold
-
-em
-  font-style italic
-
-activeColor = #37AD8E
-selectedActiveColor = #127058
-normalMaxWidth = 600px
-
-h1
-  font-size 36px
-  text-transform uppercase
-  text-align center
-  font-weight 700
-  padding 40px 0 20px 0
-  letter-spacing 1px
-  word-spacing 10px
-
-p.date
-  text-align center
-  text-transform uppercase
-  color #666
-  padding-bottom 40px
-
-p, li
-  font-size 18px
-  margin-bottom 1em
-  line-height 1.8
-  color #111
-
-p, li, h1, h2, h3
-  max-width normalMaxWidth
-  margin-left auto
-  margin-right auto
-
-a
-  color activeColor
-  font-weight bold
-  &:hover
-    color selectedActiveColor
-
-.line-date
-  .line
-    max-width normalMaxWidth
-    border-top 1px solid activeColor
-    margin 0 auto
-  .date
-    text-transform uppercase
-    color #666
-    margin 0 auto
-    margin-top -9px
-    text-align center
-    span
-      background-color #fff
-      padding 0 5px
+@import vars
+@import footer
+@import basic-styling
 
 header
   .links
@@ -80,26 +23,42 @@ header
       color #fff
     padding-top 80px
 
+  p.date
+    text-align center
+    text-transform uppercase
+    color #fff
+    padding-bottom 40px
+
   &.plain
-    //grad3(-45deg, #006ba3, #34c5b6, #006ba3)
     grad3(-45deg, #006ba3, #00BB9D, #006ba3)
+    //grad3(-45deg, #2590d3, #35B7BB, #2590d3)
+    //grad3(-45deg, #2590d3, #3bcfd3, #2590d3)
 
 .post-excerpt
-  padding-bottom 20px
+  padding 40px 0 0 0
   h2
     a
       color #111
-      font-size 25px
-      text-transform uppercase
-  .title
-    max-width normalMaxWidth
-    margin 40px auto 20px auto
+    font-size 28px
+    text-transform uppercase
+    text-align center
   .date
     font-size 18px
     text-transform uppercase
-    float right
-    padding-top 5px
-    padding-left 10px
-    color #666
+    color #888
+    text-align center
+    margin 20px 0
   .excerpt p
     color #444
+  .excerpt
+    padding-bottom 30px
+  .continue
+    visibility hidden
+  &:hover
+    .continue
+      visibility visible
+  .line
+    max-width normalMaxWidth
+    border-top 1px solid tint(activeColor, 50)
+    margin 0 auto 10px auto
+

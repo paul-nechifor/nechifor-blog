@@ -49,11 +49,21 @@ module.exports = function (grunt) {
 
   grunt.registerTask('jekyll', function () {
     var done = this.async();
-
     exec('cd build; jekyll build', function (err) {
-      done();
+      done(err);
     });
   });
 
-  grunt.registerTask('default', ['clean', 'copy', 'jade', 'stylus', 'jekyll']);
+  grunt.registerTask('logos', function () {
+    var done = this.async();
+    var files = ['logo.png', 'logo57.png', 'logo152.png'].map(function (f) {
+      return '/home/p/pro/nechifor-logo/' + f;
+    }).join(' ');
+    exec('cp ' + files + ' build/s', function (err) {
+      done(err);
+    });
+  });
+
+  grunt.registerTask('default', ['clean', 'copy', 'jade', 'stylus', 'logos',
+    'jekyll']);
 };
