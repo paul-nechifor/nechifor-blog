@@ -16,13 +16,15 @@ h1
   letter-spacing 1px
   word-spacing 10px
 
-p, li
+p, li, pre
   font-size 18px
+  color #111
   margin-bottom 1em
   line-height 1.8
-  color #111
+  small
+    font-size 15px
 
-p, li, h1, h2, h3
+p, li, h1, h2, h3, pre
   max-width normalMaxWidth
   margin-left auto
   margin-right auto
@@ -32,3 +34,20 @@ a
   font-weight bold
   &:hover
     color selectedActiveColor
+
+code
+  font-family monospace
+
+pre
+  max-width normalMaxWidth - 2 * 10px
+  padding 10px
+  background #eee
+  overflow auto
+
+p code
+  background #eee
+  padding 3px 3px
+  margin -1px -1px
+
+.star-separator
+  content "***"

@@ -17,6 +17,12 @@ module.exports = function (grunt) {
           },
           {
             expand: true,
+            src: ['images/*'],
+            flatten: true,
+            dest: 'build/images'
+          },
+          {
+            expand: true,
             src: ['_config.yml'],
             dest: 'build'
           }
