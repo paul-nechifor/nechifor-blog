@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1= gen.info.title
+  h2 Posts
+  each post in gen.posts
+    h3: a(href=gen.info.app.root + post.id + '.html')= post.info.title

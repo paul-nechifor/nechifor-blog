@@ -1,0 +1,17 @@
+---
+type: article
+date: 2013-08-04
+title: Reddit Summarization Bot
+---
+
+I read about [Automatic Summarization in Medium](https://news.ycombinator.com/item?id=6049873) from HN and got an idea for my second bot: posting summarizations on long Reddit posts. These are also know as TL;RDs on the internets.
+
+I use the Python bindings for the Open Text Summarizer (OTS). This works by extracting the most important sentences in the text.
+
+Since such a thing would only work on certain types of comments I verify that they are of sufficient length and only contain plain text (no lists, tables and others).
+
+### Results
+
+The [source code](https://github.com/paul-nechifor/reddit-tldr) is available on GitHub and I ran the bot on [CGTLDR](http://www.reddit.com/user/CGTLDR).
+
+The results have been incredibly disappointing. The comments made are sometimes useful, but they have produced little interest.
