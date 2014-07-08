@@ -20,7 +20,6 @@ gulp.task 'default', (cb) ->
     mkdir -p html
   """, ->
     info =
-      title: 'Paul Nechifor\'s Blog'
       app: app
     generator = new Generator info, __dirname + '/posts', __dirname + '/html',
         __dirname + '/templates'

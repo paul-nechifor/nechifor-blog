@@ -1,7 +1,14 @@
 extends layout
 
+block headStart
+  title= gen.info.app.title
+
+block header
+  a: img.logo(src=paths.static + '/logo152.png', alt='Paul Nechifor logo')
+  h1
+    a(href=gen.info.app.rootHref)= gen.info.app.title
+
 block content
-  h1= gen.info.title
   h2 Posts
   each post in gen.posts
     h3: a(href=gen.info.app.root + post.id + '.html')= post.info.title

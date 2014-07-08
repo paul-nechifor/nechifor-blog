@@ -1,6 +1,15 @@
 extends layout
 
-block content
-  h1= post.info.title
+block headStart
+  title #{post.info.title} – #{gen.info.app.title}
 
-  != post.html
+block header
+  .links
+    a(href='http://nechifor.net').left Paul Nechifor
+    a(href=gen.info.app.rootHref).right Blog Posts
+    div(style='clear:both')
+  h1
+    a(href=gen.info.app.root + post.id + '.html')= post.info.title
+
+block content
+  article!= post.html

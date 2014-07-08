@@ -1,0 +1,207 @@
+// Reset
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img,
+ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure,
+figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
+time, mark, audio, video
+  margin 0
+  padding 0
+  border 0
+  font-size 100%
+  font inherit
+  vertical-align baseline
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav,
+section
+  display block
+
+body
+  line-height: 1
+
+ol, ul
+  list-style: none
+
+blockquote, q
+  quotes: none
+
+blockquote:before, blockquote:after, q:before, q:after
+  content ''
+  content none
+
+table
+  border-collapse collapse
+  border-spacing 0
+a
+  text-decoration none
+  color inherit
+  
+// Mixins
+grad3(angle, c1, c2, c3)
+  background-color c2
+  background -webkit-linear-gradient(angle, c1, c2, c3)
+  background -moz-linear-gradient(angle, c1, c2, c3)
+  background -ms-linear-gradient(angle, c1, c2, c3)
+  background linear-gradient(angle, c1, c2, c3)
+  
+// Vars
+activeColor = #37AD8E
+selectedActiveColor = #127058
+normalMaxWidth = 600px
+
+// Footer
+html, body
+  height 100%
+
+.full-container
+  display table
+  height 100%
+  width 100%
+
+.non-footer
+  display table-row
+  height auto
+
+footer
+  display table-row
+  height 1px
+  background-color #09AD8C
+  .container
+    padding 30px 0
+  p:last-child
+    margin-bottom 0
+  p
+    text-align center
+  p, a
+    color #fff
+    
+// Basic styling
+body
+  font-family 'Open Sans', sans-serif
+
+strong
+  font-weight bold
+
+em
+  font-style italic
+
+h1
+  font-size 36px
+  text-transform uppercase
+  text-align center
+  font-weight 700
+  padding 40px 0 20px 0
+  letter-spacing 1px
+  word-spacing 10px
+
+p, li, pre
+  font-size 18px
+  color #111
+  margin-bottom 1em
+  line-height 1.8
+  small
+    font-size 15px
+
+p, li, h1, h2, h3, pre
+  max-width normalMaxWidth
+  margin-left auto
+  margin-right auto
+
+a
+  color activeColor
+  font-weight bold
+  &:hover
+    color selectedActiveColor
+
+code
+  font-family monospace
+
+pre
+  max-width normalMaxWidth - 2 * 10px
+  padding 10px
+  background #eee
+  overflow auto
+
+p code
+  background #eee
+  padding 3px 3px
+  margin -1px -1px
+
+.star-separator
+  content "***"
+  
+// Rest
+header
+  .links
+    max-width normalMaxWidth
+    margin 0 auto
+    text-transform uppercase
+    font-weight bold
+    font-size 18px
+    padding-bottom 40px
+    a
+      color #fff
+      padding 10px 0
+    .left
+      float left
+    .right
+      float right
+  h1
+    a
+      color #fff
+    padding 30px 0 30px 0
+
+  p.date
+    text-align center
+    text-transform uppercase
+    color #fff
+    padding-bottom 40px
+
+  &.plain
+    background-color #09AD8C
+  img.logo
+    display block
+    margin 0 auto
+
+header, footer
+  a:hover
+    color tint(activeColor, 50%)
+
+.content
+  padding-top 20px
+  h2
+    font-size 34px
+    margin 18px auto 12px auto
+  h3
+    font-size 24px
+    margin 8px auto 6px auto
+
+.post-excerpt
+  padding 40px 0 0 0
+  h2
+    a
+      color #111
+    font-size 28px
+    text-transform uppercase
+    text-align center
+  .date
+    font-size 18px
+    text-transform uppercase
+    color #888
+    text-align center
+    margin 20px 0
+  .excerpt p
+    color #444
+  .excerpt
+    padding-bottom 30px
+  .continue
+    visibility hidden
+  &:hover
+    .continue
+      visibility visible
+  .line
+    max-width normalMaxWidth
+    border-top 1px solid tint(activeColor, 50)
+    margin 0 auto 10px auto
+

@@ -45,4 +45,4 @@ class Post
   processMarkup: (cb) ->
     @info = yaml.safeLoad @yamlData
     @html = marked @markdown
-    @gen.writeJade @info.type, {post: @}, @id, cb
+    @gen.writeJade @info.type, {post: @, gen: @gen}, @id, cb
