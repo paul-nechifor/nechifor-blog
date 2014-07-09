@@ -2,10 +2,17 @@ async = require 'async'
 fs = require 'fs'
 jade = require 'jade'
 marked = require 'marked'
+minifyHtml = require('html-minifier').minify
 yaml = require 'js-yaml'
 
 module.exports = class Generator
   constructor: (@info, @postsDir, @outDir, @templatesDir) ->
+    @minifyHtmlOptions =
+      removeComments: true
+      collapseWhitespace: true
+      caseSensitive: true
+    marked.setOptions
+      smartypants: true
 
   generate: (cb) ->
     fs.readdir @postsDir, (err, files) =>
@@ -46,4 +53,5 @@ class Post
   processMarkup: (cb) ->
     @info = yaml.safeLoad @yamlData
     @html = marked @markdown
+    @html = minifyHtml @html, @gen.minifyHtmlOptions
     @gen.writeJade @info.type, {post: @, gen: @gen}, @id, cb
