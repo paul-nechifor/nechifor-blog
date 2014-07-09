@@ -106,7 +106,7 @@ ul
   list-style square
   padding-left 40px
 
-p, li, h1, h2, h3, pre
+p, li, h1, h2, h3, pre, .content
   color normalColor
   max-width normalMaxWidth
   margin-left auto
@@ -131,6 +131,11 @@ p code
   background #eee
   padding 3px 3px
   margin -1px -1px
+
+.star-separator
+  text-align center
+  &:before
+    content "***"
 
 blockquote
   border-left 5px solid #ddd
