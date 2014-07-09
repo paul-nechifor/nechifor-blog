@@ -1,5 +1,5 @@
 ---
-type: article
+type: post
 date: 2014-03-20
 title: My Brain on Git
 ---

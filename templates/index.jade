@@ -9,6 +9,17 @@ block header
     a(href=gen.info.app.rootHref)= gen.info.app.title
 
 block content
+  - function getType(type) {
+  -   var ret = gen.posts.filter(function (p){return p.info.type === type});
+  -   return ret.sort(function (a, b) {return b.info.date - a.info.date});
+  - }
+
   h2 Posts
-  each post in gen.posts
+  - var posts = getType('post');
+  each post in posts
+    h3: a(href=gen.info.app.root + post.id + '.html')= post.info.title
+
+  h2 Articles
+  - var posts = getType('article');
+  each post in posts
     h3: a(href=gen.info.app.root + post.id + '.html')= post.info.title
