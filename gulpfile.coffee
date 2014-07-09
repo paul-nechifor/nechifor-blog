@@ -23,4 +23,6 @@ gulp.task 'default', (cb) ->
       app: app
     generator = new Generator info, __dirname + '/posts', __dirname + '/html',
         __dirname + '/templates'
+    generator.markdownVariables =
+      static: app.paths.static
     generator.generate cb

@@ -11,6 +11,7 @@ module.exports = class Generator
       removeComments: true
       collapseWhitespace: true
       caseSensitive: true
+    @markdownVariables = {}
     marked.setOptions
       smartypants: true
 
@@ -52,6 +53,12 @@ class Post
 
   processMarkup: (cb) ->
     @info = yaml.safeLoad @yamlData
+    @markdown = @expandMarkdownVariables @markdown
     @html = marked @markdown
     @html = minifyHtml @html, @gen.minifyHtmlOptions
     @gen.writeJade @info.type, {post: @, gen: @gen}, @id, cb
+
+  expandMarkdownVariables: (text) ->
+    for key, value of @gen.markdownVariables
+      text = text.replace new RegExp('@@' + key + '@@', 'g'), value
+    text
