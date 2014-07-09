@@ -10,7 +10,8 @@ module.exports = class Generator
   generate: (cb) ->
     fs.readdir @postsDir, (err, files) =>
       return cb err if err
-      async.map files, @generatePost.bind(@), (err, @posts) =>
+      goodFiles = files.filter (f) -> f[0] isnt '.'
+      async.map goodFiles, @generatePost.bind(@), (err, @posts) =>
         return cb err if err
         @writeIndex cb
 
