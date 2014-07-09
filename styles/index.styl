@@ -18,13 +18,13 @@ section
   display block
 
 body
-  line-height: 1
+  line-height 1
 
 ol, ul
-  list-style: none
+  list-style none
 
 blockquote, q
-  quotes: none
+  quotes none
 
 blockquote:before, blockquote:after, q:before, q:after
   content ''
@@ -36,7 +36,7 @@ table
 a
   text-decoration none
   color inherit
-  
+
 // Mixins
 grad3(angle, c1, c2, c3)
   background-color c2
@@ -44,13 +44,14 @@ grad3(angle, c1, c2, c3)
   background -moz-linear-gradient(angle, c1, c2, c3)
   background -ms-linear-gradient(angle, c1, c2, c3)
   background linear-gradient(angle, c1, c2, c3)
-  
+
 // Vars
+normalColor = #393939
 activeColor = #37AD8E
 selectedActiveColor = #127058
 normalMaxWidth = 600px
 
-// Footer
+// Main
 html, body
   height 100%
 
@@ -75,8 +76,7 @@ footer
     text-align center
   p, a
     color #fff
-    
-// Basic styling
+
 body
   font-family 'Open Sans', sans-serif
 
@@ -97,13 +97,17 @@ h1
 
 p, li, pre
   font-size 18px
-  color #111
   margin-bottom 1em
   line-height 1.8
   small
     font-size 15px
 
+ul
+  list-style square
+  padding-left 40px
+
 p, li, h1, h2, h3, pre
+  color normalColor
   max-width normalMaxWidth
   margin-left auto
   margin-right auto
@@ -128,10 +132,12 @@ p code
   padding 3px 3px
   margin -1px -1px
 
-.star-separator
-  content "***"
-  
-// Rest
+blockquote
+  border-left 5px solid #ddd
+  padding-left 10px
+  width normalMaxWidth - 5px - 10px
+  margin 0 auto
+
 header
   .links
     max-width normalMaxWidth
@@ -151,13 +157,6 @@ header
     a
       color #fff
     padding 30px 0 30px 0
-
-  p.date
-    text-align center
-    text-transform uppercase
-    color #fff
-    padding-bottom 40px
-
   &.plain
     background-color #09AD8C
   img.logo
@@ -172,36 +171,8 @@ header, footer
   padding-top 20px
   h2
     font-size 34px
-    margin 18px auto 12px auto
   h3
     font-size 24px
-    margin 8px auto 6px auto
-
-.post-excerpt
-  padding 40px 0 0 0
-  h2
-    a
-      color #111
-    font-size 28px
-    text-transform uppercase
-    text-align center
-  .date
-    font-size 18px
-    text-transform uppercase
-    color #888
-    text-align center
-    margin 20px 0
-  .excerpt p
-    color #444
-  .excerpt
-    padding-bottom 30px
-  .continue
-    visibility hidden
-  &:hover
-    .continue
-      visibility visible
-  .line
-    max-width normalMaxWidth
-    border-top 1px solid tint(activeColor, 50)
-    margin 0 auto 10px auto
-
+  h2, h3
+    margin-top 0.8em
+    margin-bottom 0.5em
