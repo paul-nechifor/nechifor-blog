@@ -4,7 +4,7 @@
   "author": "Paul Nechifor <paul@nechifor.net> (http://nechifor.net/)",
   "scripts": {
     "build": "intercessor",
-    "serve": "cd build/html; python -m SimpleHTTPServer 3000"
+    "start": "node build/app.js"
   },
   "dependencies": {
     "async": "^0.9.0",
