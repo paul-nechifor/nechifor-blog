@@ -9,7 +9,7 @@ block header
     a(href=gen.info.app.rootHref).right Blog Posts
     div(style='clear:both')
   h1
-    a(href=gen.info.app.root + post.id + '.html')= post.info.title
+    a(href=gen.info.app.root + post.id)= post.info.title
 
 block content
   article!= post.html

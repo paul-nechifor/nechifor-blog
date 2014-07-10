@@ -17,9 +17,9 @@ block content
   h2 Posts
   - var posts = getType('post');
   each post in posts
-    h3: a(href=gen.info.app.root + post.id + '.html')= post.info.title
+    h3: a(href=gen.info.app.root + post.id)= post.info.title
 
   h2 Articles
   - var posts = getType('article');
   each post in posts
-    h3: a(href=gen.info.app.root + post.id + '.html')= post.info.title
+    h3: a(href=gen.info.app.root + post.id)= post.info.title
