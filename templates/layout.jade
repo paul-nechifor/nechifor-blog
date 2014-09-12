@@ -14,8 +14,13 @@ html(lang='en')
   body
     .full-container
       .non-footer
-        header.plain
-          block header
+        if page.hasCover()
+          header.plain(class=page.getCoverClasses(),
+              style="background-image: url('#{page.getCoverPath()}')")
+            block header
+        else
+          header.plain
+            block header
 
         .content
           block content

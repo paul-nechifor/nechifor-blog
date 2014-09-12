@@ -1,7 +1,7 @@
 extends layout
 
 block headStart
-  title #{post.info.title} – #{gen.info.app.title}
+  title #{page.info.title} – #{gen.info.app.title}
 
 block header
   .links
@@ -9,7 +9,7 @@ block header
     a(href=gen.info.app.rootHref).right Blog Posts
     div(style='clear:both')
   h1
-    a(href=gen.info.app.root + post.id)= post.info.title
+    a(href=gen.info.app.root + page.id)= page.info.title
 
 block content
-  article!= post.html
+  article!= page.html

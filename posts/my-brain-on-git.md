@@ -2,6 +2,7 @@
 type: post
 date: 2014-03-20
 title: My Brain on Git
+cover: 600
 ---
 
 I've been using Git for three years, but only recently I've started to use it
