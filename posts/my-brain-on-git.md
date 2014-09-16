@@ -21,7 +21,7 @@ branch with the homework (`hw1`). I did not finish that and started a branch
 with the second lab work (`lab4`). I did not finish that and started a branch
 with the second homework (`ls`). My history looks like this:
 
-![initial git history](@@static@@/images/git-initial.png)
+<div class='image'><img src='@@static@@/images/git-initial.png' alt='initial git history' class='image-center'></div>
 
 Admitedly, I didn't branch correctly. But with Git I can fix anything. Right?
 But I'll just backup the whole project before I start being a victor and rewrite
@@ -174,7 +174,7 @@ I can amend it while I'm editing the second commit.
 
 I'll review the history:
 
-![final git history](@@static@@/images/git-final.png)
+<div class='image'><img src='@@static@@/images/git-final.png' alt='final git history' class='image-center'></div>
 
 Fuck! My history tree is now a forest.
 
