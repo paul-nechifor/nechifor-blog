@@ -50,7 +50,7 @@ class Page
 
   getCoverClasses: -> 'cover cover' + @cover
 
-  getCoverPath: -> @gen.info.app.paths.static + '/covers/' + @id + '.png'
+  getCoverPath: -> @gen.info.app.paths.static + '/covers/' + @id + '.jpg'
 
 class Post extends Page
   constructor: (gen, @file) ->
