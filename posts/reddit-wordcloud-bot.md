@@ -2,14 +2,15 @@
 type: article
 date: 2013-08-04
 title: Reddit Wordcloud Bot
+cover: 600
 ---
 
 The third Reddit bot I've decided to make is one which generates word clouds for
 comments in submissions. The [source code for the
 bot](https://github.com/paul-nechifor/reddit-cloud) is on GitHub (along with
 instructions) and I'm running it on user
-[WordCloudBot2](http://www.reddit.com/user/WordCloudBot2). The reason for the
-_2_ is that someone registered the first name 6 hours before me.
+[WordCloudBot2](http://www.reddit.com/user/WordCloudBot2?sort=top). The reason
+for the _2_ is that someone registered the first name 6 hours before me.
 
 ## The Good
 

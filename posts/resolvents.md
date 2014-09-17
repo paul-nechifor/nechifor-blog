@@ -2,6 +2,7 @@
 type: article
 date: 2014-06-06
 title: Resolvents
+cover: 600
 ---
 
 [Resolvents][repo] was one of my homeworks for the [Logics for Computer
