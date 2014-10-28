@@ -58,8 +58,8 @@ So I should include the initial one in the rebase.
 
 What?... I'll search the web.
 
-Oh, so I have to include `--root` to edit that. I think first to need master the
-plain `rebase -i` first. I didn't care much for that move anyway.
+Oh, so I have to include `--root` to edit that. I think I first to need master
+the plain `rebase -i`. I didn't care much for that change move anyway.
 
 So I want to edit "Add NUnit reference.". Here it is:
 
