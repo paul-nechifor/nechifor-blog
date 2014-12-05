@@ -33,31 +33,36 @@ blockquote:before, blockquote:after, q:before, q:after
 table
   border-collapse collapse
   border-spacing 0
+
 a
   text-decoration none
   color inherit
 
-// Mixins
-grad3(angle, c1, c2, c3)
-  background-color c2
-  background -webkit-linear-gradient(angle, c1, c2, c3)
-  background -moz-linear-gradient(angle, c1, c2, c3)
-  background -ms-linear-gradient(angle, c1, c2, c3)
-  background linear-gradient(angle, c1, c2, c3)
-
-// Vars
+// Colors
 normalColor = #393939
 activeColor = #37AD8E
 selectedActiveColor = #127058
+
+// Dimensions
 normalMaxWidth = 600px
+minMaxWidth = 320px
+widthIncrements = 40px
+widthDefinitions = floor((normalMaxWidth - minMaxWidth) / widthIncrements)
+prePadding = 10px
+
+// Mixins
+sub-normal-width()
+  @media (max-width: normalMaxWidth - 1)
+    {block}
 
 // Main
-html, body
-  height 100%
-
 .full-container
   display table
+
+html, body, .full-container
   height 100%
+
+.full-container, .non-footer, .content, .content article
   width 100%
 
 .non-footer
@@ -101,6 +106,10 @@ p, li, pre, .image
   line-height 1.8
   small
     font-size 15px
+  +sub-normal-width()
+    font-size 16px
+    small
+      font-size 13px
 
 ul
   list-style square
@@ -112,6 +121,10 @@ p, li, h1, h2, h3, pre, .content
   margin-left auto
   margin-right auto
 
+p, li, h1, h2, h3
+  +sub-normal-width()
+    padding 0 10px
+
 a
   color activeColor
   font-weight bold
@@ -122,15 +135,20 @@ code
   font-family "Ubuntu Mono"
 
 pre
-  max-width normalMaxWidth - 2 * 10px
-  padding 10px
+  max-width normalMaxWidth - 2 * prePadding
+  padding prePadding
   background #eee
   overflow auto
+  // Dumb idiotic hack because I suck at CSS.
+  for i in (0 .. widthDefinitions)
+    @media (max-width: normalMaxWidth + 20 - i * widthIncrements - 1)
+      width normalMaxWidth - (i + 1) * widthIncrements - 4 * prePadding
 
 p code
   background #eee
   padding 3px 3px
   margin -1px -1px
+  border-radius 3px
 
 .star-separator
   text-align center
@@ -193,6 +211,8 @@ header, footer
     margin-bottom 0.5em
 
 .image
+  &, img
+    max-width 100%
   .image-center
     display block
     margin-left auto
