@@ -39,20 +39,20 @@ a
   color inherit
 
 // Colors
-normalColor = #393939
-activeColor = #37AD8E
-selectedActiveColor = #127058
+normal-color = #393939
+active-color = #37AD8E
+selected-active-color = #127058
 
 // Dimensions
-normalMaxWidth = 600px
-minMaxWidth = 320px
-widthIncrements = 40px
-widthDefinitions = floor((normalMaxWidth - minMaxWidth) / widthIncrements)
-prePadding = 10px
+normal-max-width = 600px
+min-max-width = 320px
+width-increments = 40px
+width-definitions = floor((normal-max-width - min-max-width) / width-increments)
+pre-padding = 10px
 
 // Mixins
 sub-normal-width()
-  @media (max-width: normalMaxWidth - 1)
+  @media (max-width: normal-max-width - 1)
     {block}
 
 // Main
@@ -116,8 +116,8 @@ ul
   padding-left 40px
 
 p, li, h1, h2, h3, pre, .content
-  color normalColor
-  max-width normalMaxWidth
+  color normal-color
+  max-width normal-max-width
   margin-left auto
   margin-right auto
 
@@ -126,23 +126,23 @@ p, li, h1, h2, h3
     padding 0 10px
 
 a
-  color activeColor
+  color active-color
   font-weight bold
   &:hover
-    color selectedActiveColor
+    color selected-active-color
 
 code
   font-family "Ubuntu Mono"
 
 pre
-  max-width normalMaxWidth - 2 * prePadding
-  padding prePadding
+  max-width normal-max-width - 2 * pre-padding
+  padding pre-padding
   background #eee
   overflow auto
   // Dumb idiotic hack because I suck at CSS.
-  for i in (0 .. widthDefinitions)
-    @media (max-width: normalMaxWidth + 20 - i * widthIncrements - 1)
-      width normalMaxWidth - (i + 1) * widthIncrements - 4 * prePadding
+  for i in (0 .. width-definitions)
+    @media (max-width: normal-max-width + 20 - i * width-increments - 1)
+      width normal-max-width - (i + 1) * width-increments - 4 * pre-padding
 
 p code
   background #eee
@@ -158,12 +158,12 @@ p code
 blockquote
   border-left 5px solid #ddd
   padding-left 10px
-  width normalMaxWidth - 5px - 10px
+  width normal-max-width - 5px - 10px
   margin 0 auto
 
 header
   .links
-    max-width normalMaxWidth
+    max-width normal-max-width
     margin 0 auto
     text-transform uppercase
     font-weight bold
@@ -198,7 +198,7 @@ header
 
 header, footer
   a:hover
-    color tint(activeColor, 50%)
+    color tint(active-color, 50%)
 
 .content
   padding-top 20px
