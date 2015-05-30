@@ -6,7 +6,7 @@ cover: 600
 ---
 
 [Resolvents][repo] was one of my homeworks for the [Logics for Computer
-Science][course] course in my first semester of collage. It has an interesting
+Science][course] course in my first semester of college. It has an interesting
 story. This homework, though by itself insignificant, helped mark an important
 point in my development: proving that anything that can be done by a program
 isn't worth doing by hand.
