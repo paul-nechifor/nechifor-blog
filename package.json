@@ -1,6 +1,6 @@
 {
   "name": "nechifor-blog",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Paul Nechifor’s blog.",
   "devDependencies": {
     "eslint": "^4.0.0",
