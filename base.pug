@@ -10,12 +10,28 @@ html(lang='en')
       body
         font-size 1.2em
         line-height 1.4
-      article
+      article, footer
         margin 0 auto
         max-width 600px
       a
         text-decoration none
         &:hover
           text-decoration underline
+      footer
+        padding-top 0.5em
+        small
+          color #999
+          a
+            color #888
   body
     block content
+
+    footer
+      :markdown-it
+        Created by [Paul Nechifor](/).
+
+      small: :markdown-it
+        [Home](/) •
+        [Blog](/blog) •
+        [Projects](/projects) •
+        [Twitter](https://twitter.com/PaulNechifor)
