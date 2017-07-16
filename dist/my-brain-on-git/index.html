@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><title>My Brain on Git</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="apple-touch-icon" href="/favicon152.png"><style>body{font-size:1.2em;line-height:1.4}article,footer{margin:0 auto;max-width:600px}a{text-decoration:none;}a:hover{text-decoration:underline}footer{padding-top:.5em;}footer small{color:#999;}footer small a{color:#888}</style></head><body><article><h1><a href=".">My Brain on Git</a></h1><p>I've been using Git for three years, but only recently I've started to use it properly. I've read almost all of <a href="http://www.amazon.com/gp/product/1430218339">Pro Git</a> so it's high time I use the more advanced features.</p><p>Today I think I'm going to make my first rebase: splitting a commit. (Squashing doesn't count, that's easy.)</p><p>The project I'm using as a guinea pig is my Software Quality lab exercises. It's a C# solution with multiple projects.</p><p>The following is the history. Last week I started the official <a href="http://www.nunit.org/index.php?p=quickStart&amp;r=2.2.10">NUnit Quick Start</a> (until end of <code>master</code>). I did not finish it and started a branch with the homework (<code>hw1</code>). I did not finish that and started a branch with the second lab work (<code>lab4</code>). I did not finish that and started a branch with the second homework (<code>ls</code>). My history looks like this:</p><div class="image"><img src="git-initial.png" alt="initial git history" class="image-center"></div><p>Admitedly, I didn't branch correctly. But with Git I can fix anything. Right? But I'll just backup the whole project before I start being a victor and rewrite my history.</p><p>I have multiple problems to fix. The first one would be that I started my project as an executable instead of library.</p><pre><code>-    &lt;OutputType&gt;Exe&lt;/OutputType&gt;
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><title>My Brain on Git</title><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Paul Nechifor’s blog posts."><link rel="apple-touch-icon" href="/favicon152.png"><style>body{font-size:1.2em;line-height:1.4}article,footer{margin:0 auto;max-width:600px}a{text-decoration:none;}a:hover{text-decoration:underline}.image{text-align:center}pre{background-color:#eee;padding:4px 2px;overflow-x:auto}.image img,pre{max-width:100%}footer{padding-top:.5em;}footer small{color:#999;}footer small a{color:#888}</style></head><body><article><h1><a href=".">My Brain on Git</a></h1><p>I’ve been using Git for three years, but only recently I’ve started to use it properly. I’ve read almost all of <a href="http://www.amazon.com/gp/product/1430218339">Pro Git</a> so it’s high time I use the more advanced features.</p><p>Today I think I’m going to make my first rebase: splitting a commit. (Squashing doesn’t count, that’s easy.)</p><p>The project I’m using as a guinea pig is my Software Quality lab exercises. It’s a C# solution with multiple projects.</p><p>The following is the history. Last week I started the official <a href="http://www.nunit.org/index.php?p=quickStart&amp;r=2.2.10">NUnit Quick Start</a> (until end of <code>master</code>). I did not finish it and started a branch with the homework (<code>hw1</code>). I did not finish that and started a branch with the second lab work (<code>lab4</code>). I did not finish that and started a branch with the second homework (<code>ls</code>). My history looks like this:</p><div class="image"><img src="git-initial.png" alt="initial git history" class="image-center"></div><p>Admitedly, I didn’t branch correctly. But with Git I can fix anything. Right? But I’ll just backup the whole project before I start being a victor and rewrite my history.</p><p>I have multiple problems to fix. The first one would be that I started my project as an executable instead of library.</p><pre><code>-    &lt;OutputType&gt;Exe&lt;/OutputType&gt;
 +    &lt;OutputType&gt;Library&lt;/OutputType&gt;
 </code></pre><p>So I want to move that hunk in my initial commit.</p><pre><code>$ git rebase -i master~3
 </code></pre><p>The commits are displayed in the first to last order in this here editor. I want to edit &quot;Add initial bank class.&quot;. Write and quit.</p><p>Wait a second. I want to move things into the initial commit. I probably should have done <code>rebase -i master~4</code>.</p><pre><code>$ git rebase --abandon
 error: unknown option `abandon'
-</code></pre><p>Ah, yes. It's <code>--abort</code>.</p><pre><code>$ git rebase --abort
+</code></pre><p>Ah, yes. It’s <code>--abort</code>.</p><pre><code>$ git rebase --abort
 </code></pre><p>So I should include the initial one in the rebase.</p><pre><code>$ git rebase -i master~4
 fatal: Needed a single revision
 invalid upstream master~4
-</code></pre><p>What?... I'll search the web.</p><p>Oh, so I have to include <code>--root</code> to edit that. I think I first to need master the plain <code>rebase -i</code>. I didn't care much for that change move anyway.</p><p>So I want to edit &quot;Add NUnit reference.&quot;. Here it is:</p><pre><code>diff --git a/Libraries/nunit.framework.dll b/Libraries/nunit.framework.dll
+</code></pre><p>What?... I’ll search the web.</p><p>Oh, so I have to include <code>--root</code> to edit that. I think I first to need master the plain <code>rebase -i</code>. I didn’t care much for that change move anyway.</p><p>So I want to edit &quot;Add NUnit reference.&quot;. Here it is:</p><pre><code>diff --git a/Libraries/nunit.framework.dll b/Libraries/nunit.framework.dll
 new file mode 100644
 index 0000000..780727f
 Binary files /dev/null and b/Libraries/nunit.framework.dll differ
@@ -34,14 +34,14 @@ index e336bd6..4ca749f 100644
    &lt;/ItemGroup&gt;
    &lt;ItemGroup&gt;
      &lt;Folder Include=&quot;Properties\&quot; /&gt;
-</code></pre><p>I should split adding the DLL in its own commit. A reason I can make up is that the DLL isn't unique to this project. It's shared between projects of the solution.</p><pre><code>$ git rebase -i master~3
+</code></pre><p>I should split adding the DLL in its own commit. A reason I can make up is that the DLL isn’t unique to this project. It’s shared between projects of the solution.</p><pre><code>$ git rebase -i master~3
 $ git reset HEAD^
 $ git add Libraries/*
 $ gac Add NUnit DLL.
-</code></pre><p>Damn my reflexes! <code>gac</code> is a bash function of mine for staging everything and making a commit without having to quote the commit message. Now I've committed everything!</p><p>I'll reset the head again.</p><pre><code>$ git reset HEAD^
+</code></pre><p>Damn my reflexes! <code>gac</code> is a bash function of mine for staging everything and making a commit without having to quote the commit message. Now I’ve committed everything!</p><p>I’ll reset the head again.</p><pre><code>$ git reset HEAD^
 $ git add Libraries/*
 $ git commit --amend -m 'Add NUnit DLL.'
-</code></pre><p>Wait, no. I should have... I'll do it again.</p><pre><code>$ git rebase --abort
+</code></pre><p>Wait, no. I should have... I’ll do it again.</p><pre><code>$ git rebase --abort
 </code></pre><p>Okay again:</p><pre><code>$ git rebase -i master~3
 $ git reset HEAD^
 $ git add Libraries/*
@@ -49,20 +49,20 @@ $ git commit -m 'Add NUnit DLL.'
 $ git add .
 $ git commit -m 'Add NUnit reference.'
 $ git rebase --continue
-</code></pre><p>Awesome! My first true rebase. I'll review my commit.</p><p>Oh yeah, I forgot to save all files in Visual Studio when I commited and now the following change is in &quot;Add NUnit reference.&quot; instead of &quot;Add initial Bank class.&quot;.</p><pre><code>-    &lt;Compile Include=&quot;Program.cs&quot; /&gt;
+</code></pre><p>Awesome! My first true rebase. I’ll review my commit.</p><p>Oh yeah, I forgot to save all files in Visual Studio when I commited and now the following change is in &quot;Add NUnit reference.&quot; instead of &quot;Add initial Bank class.&quot;.</p><pre><code>-    &lt;Compile Include=&quot;Program.cs&quot; /&gt;
 +    &lt;Compile Include=&quot;Bank.cs&quot; /&gt;
-</code></pre><p>Now I have to squash all three commits and split them in the right order! No, wait, that's stupid. I'll split the change away, then reorder it, and then squash it. Actually I think I can reorder and squash at the same time.</p><p>So I'll split it first.</p><pre><code>$ git rebase -i master~4
+</code></pre><p>Now I have to squash all three commits and split them in the right order! No, wait, that’s stupid. I’ll split the change away, then reorder it, and then squash it. Actually I think I can reorder and squash at the same time.</p><p>So I’ll split it first.</p><pre><code>$ git rebase -i master~4
 $ git reset HEAD^
 $ git add -p .
 </code></pre><p>Yes! my first <code>add -p</code>. I should use that more often.</p><pre><code>$ git commit -m 'Add NUnit reference.'
-</code></pre><p>Commit the change. The message doesn't matter because I'll squash it later.</p><pre><code>$ git add .
+</code></pre><p>Commit the change. The message doesn’t matter because I’ll squash it later.</p><pre><code>$ git add .
 $ git commit -m 'MMM'
 $ git rebase --continue
 </code></pre><p>Now to reorder and squash.</p><pre><code>$ git rebase -i master~4
-</code></pre><p>Done!</p><p>I'm getting cocky now and I have an idea. I don't have to include the initial commit in the rebase to make this change:</p><pre><code>-    &lt;OutputType&gt;Exe&lt;/OutputType&gt;
+</code></pre><p>Done!</p><p>I’m getting cocky now and I have an idea. I don’t have to include the initial commit in the rebase to make this change:</p><pre><code>-    &lt;OutputType&gt;Exe&lt;/OutputType&gt;
 +    &lt;OutputType&gt;Library&lt;/OutputType&gt;
-</code></pre><p>I can amend it while I'm editing the second commit.</p><pre><code>$ git rebase -i master~4
+</code></pre><p>I can amend it while I’m editing the second commit.</p><pre><code>$ git rebase -i master~4
 $ git reset HEAD^
 $ git add NUnitQuickStart/NUnitQuickStart.csproj
 $ git commit --amend -m 'Initial commit.'
-</code></pre><p>I'll review the history:</p><div class="image"><img src="git-final.png" alt="final git history" class="image-center"></div><p>Fuck! My history tree is now a forest.</p><p>So that's why I shouldn't have changed the initial commit. I think I can cherry pick those commits into the new tree though. I haven't done that before either. I'll get better at this with time. Git <em>is</em> fun.</p><div class="star-separator"></div><p><small>This story was reconstructed from my Bash history. There might be a few discrepancies.</small></p><p>Date: 2014-03-20</p></article><footer><p>Created by <a href="/">Paul Nechifor</a>.</p><small><p><a href="/">Home</a> • <a href="/blog">Blog</a> • <a href="/projects">Projects</a> • <a href="https://twitter.com/PaulNechifor">Twitter</a></p></small></footer></body></html>
+</code></pre><p>I’ll review the history:</p><div class="image"><img src="git-final.png" alt="final git history" class="image-center"></div><p>Fuck! My history tree is now a forest.</p><p>So that’s why I shouldn’t have changed the initial commit. I think I can cherry pick those commits into the new tree though. I haven’t done that before either. I’ll get better at this with time. Git <em>is</em> fun.</p><div class="star-separator"></div><p><small>This story was reconstructed from my Bash history. There might be a few discrepancies.</small></p><p>Date: 2014-03-20</p></article><footer><p>Created by <a href="/">Paul Nechifor</a>.</p><small><p><a href="/">Home</a> • <a href="/blog">Blog</a> • <a href="/projects">Projects</a> • <a href="https://twitter.com/PaulNechifor">Twitter</a></p></small></footer></body></html>

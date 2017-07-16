@@ -5,6 +5,7 @@ html(lang='en')
     meta(http-equiv='x-ua-compatible', content='ie=edge')
     block title
     meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='Paul Nechifor’s blog posts.')
     link(rel='apple-touch-icon', href='/favicon152.png')
     style: :stylus(compress=true)
       body
@@ -17,6 +18,14 @@ html(lang='en')
         text-decoration none
         &:hover
           text-decoration underline
+      .image
+        text-align center
+      pre
+        background-color #eee
+        padding 4px 2px
+        overflow-x auto
+      .image img, pre
+        max-width 100%
       footer
         padding-top 0.5em
         small
